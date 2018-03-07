@@ -18,7 +18,7 @@ class catController extends Controller
       $data = $this->category->get();
 
       try{
-        return $data;
+        return response()->json($data);
       }
       catch(QueryException $a){
         return response('nope', 400)->header('Content-Type','text/plain');
@@ -32,7 +32,7 @@ class catController extends Controller
 
       try{
         $newStuff = $this->category->create($newStuff);
-        return $newStuff;
+        return response()->json($newStuff);
       }
       catch(QueryException $a){
         return response('nope', 400)->header('Content-Type','text/plain');
@@ -43,7 +43,7 @@ class catController extends Controller
       $data = $this->category->where('id',$id)->get();
 
       try{
-        return $data;
+        return response()->json($data);
       }
       catch(QueryException $a){
         return response('nope', 400)->header('Content-Type','text/plain');
@@ -58,7 +58,7 @@ class catController extends Controller
 
       try{
         $newStuff = $this->category->where('id', $pt)->update($newStuff);
-        return $newStuff;
+        return response()->json($newStuff);
       }
       catch(QueryException $a){
         return response('nope', 400)->header('Content-Type','text/plain');

@@ -18,7 +18,7 @@ class itemController extends Controller
     $data = $this->item->where("category_id",$id)->get();
 
     try{
-      return $data;
+      return response()->json($data);
     }
     catch(QueryException $a){
       return response('nope', 400)->header('Content-Type','text/plain');
@@ -35,7 +35,7 @@ class itemController extends Controller
 
     try{
       $newStuff = $this->item->create($newStuff);
-      return $newStuff;
+      response()->json($newStuff);
     }
     catch(QueryException $a){
       return response('nope', 400)->header('Content-Type','text/plain');
@@ -46,7 +46,7 @@ class itemController extends Controller
     $data = $this->item->where("id",$id)->get();
 
     try{
-      return $data;
+      return response()->json($data);
     }
     catch(QueryException $a){
       return response('nope', 400)->header('Content-Type','text/plain');
@@ -64,7 +64,7 @@ class itemController extends Controller
 
     try{
       $newStuff = $this->item->where('id',$pt)->update($newStuff);
-      return $newStuff;
+      response()->json($newStuff);
     }
     catch(QueryException $a){
       return response('nope', 400)->header('Content-Type','text/plain');
